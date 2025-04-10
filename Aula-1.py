@@ -1,4 +1,4 @@
-a = input("insira seu nome")
-print(a)
+nome = input("insira seu nome")
+print(nome)
 
-print(f'Bem vindo(a) ao Codespaces, {a}')
+print(f'Bem vindo(a) ao Codespaces, {nome}')
