@@ -30,3 +30,10 @@ x = int(input())
 y = int(input())
 PROD = x*y
 print(f'PROD = {PROD}')
+
+# 2416
+
+text = input()
+C = int(text.split()[0])
+N = int(text.split()[1])
+print(C%N)
