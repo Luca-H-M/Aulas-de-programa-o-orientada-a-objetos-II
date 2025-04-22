@@ -92,3 +92,13 @@ else:
 
     print(f'R1 = {x1:.5f}')
     print(f'R2 = {x2:.5f}')
+
+# 1044
+
+inp = input()
+A = int(inp.split()[0])
+B = int(inp.split()[1])
+if B%A == 0 or A%B == 0:
+    print("Sao Multiplos")
+else:
+    print("Nao sao Multiplos")
