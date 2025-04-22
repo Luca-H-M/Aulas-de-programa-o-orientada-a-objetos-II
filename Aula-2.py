@@ -31,6 +31,13 @@ y = int(input())
 PROD = x*y
 print(f'PROD = {PROD}')
 
+# 1005
+
+A = float(input())
+B = float(input())
+MEDIA = (A*3.5 + B*7.5)/11
+print(f'MEDIA = {MEDIA:.5f}')
+
 # 2416
 
 text = input()
