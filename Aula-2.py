@@ -62,3 +62,13 @@ x = (float(X2Y2.split()[0]) - float(X1Y1.split()[0]))**2
 y = (float(X2Y2.split()[1]) - float(X1Y1.split()[1]))**2
 Distance = math.sqrt(x + y)
 print(f'{Distance:.4f}')
+
+# 1930
+
+Concections = input()
+T1 = int(Concections.split()[0])
+T2 = int(Concections.split()[1])
+T3 = int(Concections.split()[2])
+T4 = int(Concections.split()[3])
+Ttotal = T1 + T2 + T3 + T4 - 3
+print(Ttotal)
