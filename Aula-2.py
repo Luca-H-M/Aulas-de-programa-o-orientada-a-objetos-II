@@ -50,3 +50,15 @@ text = input()
 C = int(text.split()[0])
 N = int(text.split()[1])
 print(C%N)
+
+# 1015
+
+import math
+
+X1Y1 = input()
+X2Y2 = input()
+
+x = (float(X2Y2.split()[0]) - float(X1Y1.split()[0]))**2 
+y = (float(X2Y2.split()[1]) - float(X1Y1.split()[1]))**2
+Distance = math.sqrt(x + y)
+print(f'{Distance:.4f}')
