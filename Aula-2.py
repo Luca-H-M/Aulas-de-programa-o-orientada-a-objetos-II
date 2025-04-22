@@ -23,3 +23,10 @@ print(f'Área = {base * alt} - Perímetro = {(base*2) + (alt*2)} - Diagonal = {m
 
 fullfrase = input("Digite uma frase:")
 print(fullfrase[frase.rindex(" ")+ 1:])
+
+# lista 03 - 1004
+
+x = int(input())
+y = int(input())
+PROD = x*y
+print(f'PROD = {PROD}')
