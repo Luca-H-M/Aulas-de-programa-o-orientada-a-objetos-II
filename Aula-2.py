@@ -72,3 +72,23 @@ T3 = int(Concections.split()[2])
 T4 = int(Concections.split()[3])
 Ttotal = T1 + T2 + T3 + T4 - 3
 print(Ttotal)
+
+# lista 04 - 1036
+
+x = input()
+a = float(x.split()[0])
+b = float(x.split()[1])
+c = float(x.split()[2])
+
+delta = (b ** 2) - 4 * a * c
+
+if a == 0:
+    print("Impossivel calcular")
+elif delta < 0:
+    print("Impossivel calcular")
+else:
+    x1 = (-b + delta ** (1 / 2)) / (2 * a)
+    x2 = (-b - delta ** (1 / 2)) / (2 * a)
+
+    print(f'R1 = {x1:.5f}')
+    print(f'R2 = {x2:.5f}')
