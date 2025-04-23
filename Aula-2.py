@@ -102,3 +102,45 @@ if B%A == 0 or A%B == 0:
     print("Sao Multiplos")
 else:
     print("Nao sao Multiplos")
+
+# 1049
+
+nah = input()
+pt2 = input()
+pt3 = input()
+idwin = 0
+if pt2 == "ave":
+    idwin += 1
+if pt2 == "mamifero":
+    idwin += 2
+if pt2 == "inseto":
+    idwin += 3
+if pt2 == "anelideo":
+    idwin += 4
+if pt3 == "carnivoro":
+    idwin += 10
+if pt3 == "onivoro":
+    idwin += 20
+if pt3 == "herbivoro":
+    idwin += 30
+if pt3 == "hematofago":
+    idwin += 40
+    
+    
+if idwin == 11:
+    print("aguia")
+if idwin == 21:
+    print("pomba")
+if idwin == 22:
+    print("homem")
+if idwin == 32:
+    print("vaca")
+    
+if idwin == 43:
+    print("pulga")
+if idwin == 33:
+    print("lagarta")
+if idwin == 44:
+    print("sanguessuga")
+if idwin == 24:
+    print("minhoca")
