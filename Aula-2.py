@@ -262,3 +262,15 @@ while x != "2002":
     print("Senha Invalida")
     x = input()
 print("Acesso Permitido")
+
+# 1116
+
+x = int(input())
+for i in range(x):
+    y = input()
+    N1 = float(y.split()[0])
+    N2 = float(y.split()[1])
+    if N1 >= 0 and N2 != 0:
+        print(N1/N2)
+    else:
+        print("divisao impossivel")
