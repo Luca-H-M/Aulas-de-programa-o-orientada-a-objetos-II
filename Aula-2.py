@@ -175,3 +175,30 @@ if 0 <= X <= 432 and 0 <= Y <= 468:
     print("dentro")
 else:
     print("fora")
+
+# não terminado 2670
+
+floor1 = int(input())
+floor2 = int(input())
+floor3 = int(input())
+x = 0
+y = 0
+allfloors = (floor1, floor2, floor3)
+
+for floori in allfloors:
+    if floori > x:
+        z = x
+        x = floori
+    elif floori > y:
+        z = y
+        y = floori
+    else:
+        z = floori
+        
+if floor2 == x:
+    print(floor1*2 + floor3*2)
+else:
+    if y*2 < x:
+        print(y*2 + z*2)
+    else:
+        print(floor1*2 + floor3*2)
