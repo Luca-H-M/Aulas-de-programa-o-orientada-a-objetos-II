@@ -222,3 +222,35 @@ for i in range(100):
         highestpos = i + 1
 print(highest)
 print(highestpos)
+
+# 1094
+
+x = int(input())
+
+totaltestes = 0
+totalc = 0
+totalr = 0
+totals = 0
+
+for i in range(x):
+    teste = input()
+    totaltestes += int(teste.split()[0])
+    if teste.split()[1] == "C":
+        totalc += int(teste.split()[0])
+    elif teste.split()[1] == "R":
+        totalr += int(teste.split()[0])
+    else:
+        totals += int(teste.split()[0])
+print(f'Total: {totaltestes} cobaias')
+print(f'Total de coelhos: {totalc}')
+print(f'Total de ratos: {totalr}')
+print(f'Total de sapos: {totals}')
+
+porcentagemc = 100*(totalc/totaltestes)
+porcentagemr = 100*(totalr/totaltestes)
+porcentagems = 100*(totals/totaltestes)
+print(f'Percentual de coelhos: {porcentagemc:.2f} %')
+
+print(f'Percentual de ratos: {porcentagemr:.2f} %')
+
+print(f'Percentual de sapos: {porcentagems:.2f} %')
