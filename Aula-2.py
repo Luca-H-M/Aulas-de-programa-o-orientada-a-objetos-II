@@ -176,7 +176,7 @@ if 0 <= X <= 432 and 0 <= Y <= 468:
 else:
     print("fora")
 
-# não terminado 2670
+# 2670
 
 floor1 = int(input())
 floor2 = int(input())
@@ -198,7 +198,10 @@ for floori in allfloors:
 if floor2 == x:
     print(floor1*2 + floor3*2)
 else:
-    if y*2 < x:
-        print(y*2 + z*2)
+    if y*2 <= x:
+        if x == floor1:
+            print(floor2*2 + floor3*4)
+        elif x == floor3:
+            print(floor2*2 + floor1*4)
     else:
         print(floor1*2 + floor3*2)
