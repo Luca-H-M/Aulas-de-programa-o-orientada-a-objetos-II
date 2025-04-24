@@ -211,3 +211,14 @@ else:
 for numbers in range(1, 101):
     if numbers%2 == 0:
         print(numbers)
+
+# 1080
+
+highest = 0
+for i in range(100):
+    x = int(input())
+    if x > highest:
+        highest = x
+        highestpos = i + 1
+print(highest)
+print(highestpos)
