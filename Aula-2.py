@@ -254,3 +254,11 @@ print(f'Percentual de coelhos: {porcentagemc:.2f} %')
 print(f'Percentual de ratos: {porcentagemr:.2f} %')
 
 print(f'Percentual de sapos: {porcentagems:.2f} %')
+
+# 1114
+
+x = input()
+while x != "2002":
+    print("Senha Invalida")
+    x = input()
+print("Acesso Permitido")
