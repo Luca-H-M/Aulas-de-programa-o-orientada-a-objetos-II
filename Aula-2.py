@@ -205,3 +205,9 @@ else:
             print(floor2*2 + floor1*4)
     else:
         print(floor1*2 + floor3*2)
+
+# 1059
+
+for numbers in range(1, 101):
+    if numbers%2 == 0:
+        print(numbers)
