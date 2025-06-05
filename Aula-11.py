@@ -10,13 +10,13 @@ class Retagnulo:
     def set_base(self, b):
         if b > 0: self.__base = b
         else: raise ValueError()
-    def set_base(self, h):
+    def set_height(self, h):
         if h > 0: self.__height = h
         else: raise ValueError()
 
     def get_base(self):
         return self.__base
-    def set_base(self):
+    def get_height(self):
         return self.__height
     
     def CalcArea(self):
