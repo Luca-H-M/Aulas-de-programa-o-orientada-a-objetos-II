@@ -1,7 +1,8 @@
+# Questão 1. Escrever a classe do modelo: Treino
 class specclass:
     def __init__(self):
         self.__varstr = "data do treino;"
-        self.__specvar1 = 3
+        self.__specvar1 = "id"
         self.__specvar2 = "tempo"
         self.__specvar3 = "distancia"
 
@@ -11,7 +12,7 @@ class specclass:
             print("Data invalido")
         except:
             self.__varstr = de
-    def set_specvar1(self, de):
+     def set_specvar1(self, de):
         try:
             float(de)
             str(de)
@@ -36,19 +37,10 @@ class specclass:
         return self.__varstr
     def get_specvar1(self):
         return self.__specvar1
-    def get_specvar2(self):
+    def get_specvar(2self):
         return self.__specvar2
     def get_specvar3(self):
         return self.__specvar3
 
-    def __ToString__():
+    def __ToString__(self):
         return ('f{get_varstr}, {get_specvar1}, {get_specvar2}, {get_specvar3}')
-
-    
-x = specclass
-"""
-x.set_specvar1(input())
-x.set_specvar2(input())
-x.set_specvar3(input())
-"""
-print(x.__ToString__())
