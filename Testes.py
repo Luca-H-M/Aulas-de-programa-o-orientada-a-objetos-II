@@ -1,45 +1,155 @@
-# Questão 1. Escrever a classe do modelo: Treino
-class specclass:
-    def __init__(self):
-        self.__varstr = "nome;"
-        self.__specvar1 = "id"
-        self.__specvar2 = "email"
-        self.__specvar3 = "fone"
+# I. Desenvolver em Python um cadastro de contatos:
+from datetime import datetime, timedelta
+import json
 
-    def set_varstr(self, de):
+class Contato:
+    def __init__(self):
+        self.__nome = "nome"
+        self.__id = "id"
+        self.__email = "email"
+        self.__fone = "fone"
+        self.__nascimento = datetime.date(datetime.today())
+
+    def set_nome(self, de):
         try:
             float(de)
             print("nome invalido")
         except:
-            self.__varstr = de
-    def set_specvar1(self, de):
+            self.__nome = de
+    def set_id(self, de):
         try:
             float(de)
             int(de)
-            self.__specvar1 = de
+            self.__id = de
         except:
             print("id invalida")
-    def set_specvar2(self, de):
+    def set_email(self, de):
         try:
             float(de)
             print("email invalido")
         except:
-            self.__varstr = de
-    def set_specvar3(self, de):
+            self.__nome = de
+    def set_fone(self, de):
         try:
             float(de)
             print("fone invalido")
         except:
-            self.__specvar3 = de
+            self.__fone = de
+    def set_nascimento(self, de):
+        try:
+            datetime(de)
+            self.__nascimento = datetime.date(de)
+        except:
+            print("nascimento invalido")
 
-    def get_varstr(self):
-        return self.__varstr
-    def get_specvar1(self):
-        return self.__specvar1
+    def get_nome(self):
+        return self.__nome
+    def get_id(self):
+        return self.__id
     def get_specvar(self):
-        return self.__specvar2
-    def get_specvar3(self):
-        return self.__specvar3
+        return self.__email
+    def get_fone(self):
+        return self.__fone
+    def get_nascimento(self):
+        return self.__nascimento
 
-    def __ToString__(self):
-        return ('f{get_varstr}, {get_specvar1}, {get_specvar2}, {get_specvar3}')
+    def __str__(self):
+        return (f'{self.__id} ,{self.__nome} , {self.__email}, {self.__fone}, {self.__nascimento}')
+    
+    def Contato(self):
+        x = {}
+        x["id"] = self.__id
+        x["nome"] = self.__nome
+        x["email"] = self.__email
+        x["id"] = self.__nascimento
+        return x
+    
+class ContatoUI:
+    __contatos = []
+    @classmethod
+    def main(ui):
+        x = 0
+        while x != 10:
+            x = ui.menu()
+            if x == 1: ui.inserir()
+            if x == 2: ui.listar()
+            if x == 3: ui.listar_id()
+            if x == 4: ui.atualizar()
+            if x == 5: ui.excluir()
+            if x == 6: ui.pesquisar()
+            if x == 7: ui.aniversariantes()
+            if x == 8: ui.abrir()
+            if x == 9: ui.salvar()
+        
+    @classmethod
+    def menu(ui):
+       return int(input("1-Inserir, 2-listar, 3-listar id, 4-atualizar, 5-excluir, 6-pesquisar, 7-aniversariantes, 8-abrir, 9-salvar, 10-sair "))
+
+    @classmethod
+    def inserir(ui):
+        x = Contato()
+        x.set_id(input("id"))
+        x.set_nome(input("nome"))
+        x.set_email(input("email"))
+        x.set_nascimento(input("nascimento: ano, mês, dia"))
+        x.set_fone(input("fone"))
+        ui.__contatos.append(x)
+
+    @classmethod
+    def listar(ui):
+        for x in ui.__contatos:
+            print(x)
+    
+    @classmethod
+    def listar_id(ui):
+        z = input("id")
+        for x in ui.__contatos:
+            if x.get_id().startswith(z):
+                print (x)
+
+    @classmethod
+    def atualizar(ui):
+        for x in ui.__contatos:
+            if x.get_id() == int(input("informe o id do contato que deseja atualizar:")):
+                x.set_nome(input("nome"))
+                x.set_email(input("email"))
+                x.set_nascimento("nascimento")
+                x.set_fone("fone")
+                print("contato atualizado")
+                return
+            else: 
+                print("id invalido")
+
+    @classmethod
+    def excluir(ui):
+        y = input("informe o id do contato que deseja excluir:")
+        for x in ui.__contatos:
+            if x.get_id() == y:
+                ui.__contatos.remove(x)
+
+    @classmethod
+    def pesquisar(ui):
+        x = input("Informe o nome: ")
+        for y in ui.__contatos:
+            if y.get_nome().startswith(x):
+                print(y)
+
+    @classmethod
+    def aniversariantes(ui):
+        y = input("Informe o mês")
+        for x in ui.__contatos:
+            if x.get_nascimento().month == y:
+                print(x)
+
+    @classmethod
+    def abrir(ui):
+        pass
+
+    @classmethod
+    def salvar(ui):
+        with open("filmes.json", mode="w") as arquivo:
+            json.dump(ui.__contatos, arquivo, default = Contato.Contato)
+
+x = ContatoUI()
+
+x.main()
