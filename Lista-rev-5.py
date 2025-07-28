@@ -12,7 +12,7 @@ class specclass:
             print("Data invalido")
         except:
             self.__varstr = de
-     def set_specvar1(self, de):
+    def set_specvar1(self, de):
         try:
             float(de)
             str(de)
@@ -37,7 +37,7 @@ class specclass:
         return self.__varstr
     def get_specvar1(self):
         return self.__specvar1
-    def get_specvar(2self):
+    def get_specvar(self):
         return self.__specvar2
     def get_specvar3(self):
         return self.__specvar3
