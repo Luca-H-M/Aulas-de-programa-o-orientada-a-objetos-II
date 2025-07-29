@@ -8,7 +8,7 @@ class Contato:
         self.__id = "id"
         self.__email = "email"
         self.__fone = "fone"
-        #self.__nascimento = datetime.today()
+        self.__nascimento = datetime.today()
 
     def set_nome(self, de):
         try:
@@ -61,7 +61,7 @@ class Contato:
         x["id"] = self.__id    
         x["nome"] = self.__nome
         x["email"] = self.__email
-        x["nascimento"] = self.__nascimento
+        x["nascimento"] = str(self.__nascimento)
         x["fone"] = self.__fone
         print(x)
         return x
@@ -72,7 +72,6 @@ class ContatoUI:
     def main(ui):
         x = 0
         while x != 10:
-            x = 0
             x = ui.menu()
             if x == 1: ui.inserir()
             if x == 2: ui.listar()
@@ -146,11 +145,11 @@ class ContatoUI:
 
     @classmethod
     def abrir(ui):
-        pass
+        with open("contatos.json", mode="r") as arquivo:
+            ui.__contatos.append(json.load(arquivo))
 
     @classmethod
     def salvar(ui):
-        x = Contato()
         with open("contatos.json", mode="w") as arquivo:
             json.dump(ui.__contatos, arquivo, default = Contato.contato)
 

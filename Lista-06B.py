@@ -61,7 +61,7 @@ class Contato:
         x["id"] = self.__id    
         x["nome"] = self.__nome
         x["email"] = self.__email
-        x["nascimento"] = self.__nascimento
+        x["nascimento"] = str(self.__nascimento)
         x["fone"] = self.__fone
         print(x)
         return x
@@ -145,10 +145,10 @@ class ContatoUI:
 
     @classmethod
     def abrir(ui):
-        pass
+        with open("contatos.json", mode="r") as arquivo:
+            ui.__contatos.append(json.load(arquivo))
 
     @classmethod
     def salvar(ui):
-        x = Contato()
         with open("contatos.json", mode="w") as arquivo:
             json.dump(ui.__contatos, arquivo, default = Contato.contato)
