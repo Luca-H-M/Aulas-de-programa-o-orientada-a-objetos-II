@@ -1,5 +1,5 @@
 # I. Desenvolver em Python um cadastro de contatos:
-from datetime import datetime, timedelta
+from datetime import datetime
 import json
 
 class Contato:
@@ -8,7 +8,7 @@ class Contato:
         self.__id = "id"
         self.__email = "email"
         self.__fone = "fone"
-        self.__nascimento = datetime.date(datetime.today())
+        #self.__nascimento = datetime.today()
 
     def set_nome(self, de):
         try:
@@ -19,7 +19,7 @@ class Contato:
     def set_id(self, de):
         try:
             float(de)
-            int(de)
+            str(de)
             self.__id = de
         except:
             print("id invalida")
@@ -28,7 +28,7 @@ class Contato:
             float(de)
             print("email invalido")
         except:
-            self.__nome = de
+            self.__email = de
     def set_fone(self, de):
         try:
             float(de)
@@ -37,7 +37,7 @@ class Contato:
             self.__fone = de
     def set_nascimento(self, de):
         try:
-            datetime(de)
+            de = datetime.strptime(de, "%Y, %m, %d")
             self.__nascimento = datetime.date(de)
         except:
             print("nascimento invalido")
@@ -46,7 +46,7 @@ class Contato:
         return self.__nome
     def get_id(self):
         return self.__id
-    def get_specvar(self):
+    def get_email(self):
         return self.__email
     def get_fone(self):
         return self.__fone
@@ -56,12 +56,14 @@ class Contato:
     def __str__(self):
         return (f'{self.__id} ,{self.__nome} , {self.__email}, {self.__fone}, {self.__nascimento}')
     
-    def Contato(self):
+    def contato(self):
         x = {}
-        x["id"] = self.__id
+        x["id"] = self.__id    
         x["nome"] = self.__nome
         x["email"] = self.__email
-        x["id"] = self.__nascimento
+        x["nascimento"] = self.__nascimento
+        x["fone"] = self.__fone
+        print(x)
         return x
     
 class ContatoUI:
@@ -70,6 +72,7 @@ class ContatoUI:
     def main(ui):
         x = 0
         while x != 10:
+            x = 0
             x = ui.menu()
             if x == 1: ui.inserir()
             if x == 2: ui.listar()
@@ -147,8 +150,9 @@ class ContatoUI:
 
     @classmethod
     def salvar(ui):
-        with open("filmes.json", mode="w") as arquivo:
-            json.dump(ui.__contatos, arquivo, default = Contato.Contato)
+        x = Contato()
+        with open("contatos.json", mode="w") as arquivo:
+            json.dump(ui.__contatos, arquivo, default = Contato.contato)
 
 x = ContatoUI()
 
