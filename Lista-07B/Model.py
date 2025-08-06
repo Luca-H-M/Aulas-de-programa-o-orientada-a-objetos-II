@@ -3,12 +3,12 @@ from datetime import datetime
 import json
 
 class Contato:
-    def __init__(self):
-        self.__nome = "nome"
-        self.__id = "id"
-        self.__email = "email"
-        self.__fone = "fone"
-        self.__nascimento = datetime.today()
+    def __init__(self, id, nome, email, nascimento, fone):
+        self.__nome = nome
+        self.__id = id
+        self.__email = email
+        self.__fone = fone
+        self.__nascimento = datetime.date(datetime.strptime(nascimento, "%Y, %m, %d"))
 
     def set_nome(self, de):
         try:
@@ -63,20 +63,20 @@ class Contato:
         x["email"] = self.__email
         x["nascimento"] = str(self.__nascimento)
         x["fone"] = self.__fone
-        print(x)
         return x
 
 class ContatoDAO:
     __contatos = []
     @classmethod
-    def inserir(ui):
-        x = Contato()
-        x.set_id(input("id"))
-        x.set_nome(input("nome"))
-        x.set_email(input("email"))
-        x.set_nascimento(input("nascimento: ano, mês, dia"))
-        x.set_fone(input("fone"))
-        ui.__contatos.append(x)
+    def inserir(ui, x):
+        z = Contato(x[0], x[1], x[2], x[3], x[4])
+        try: 
+            ui.__abrir()
+        except:
+            pass
+        y = []
+        y.append(z)
+        ui.__contatos.append(y)
         ui.__salvar()
 
     @classmethod
@@ -88,10 +88,10 @@ class ContatoDAO:
         return z
     
     @classmethod
-    def listar_id(ui):
+    def listar_id(ui, z):
         ui.__abrir()
-        z = input("id")
         for x in ui.__contatos:
+            print (x)
             if x.get_id().startswith(z):
                 return x
 
@@ -138,10 +138,10 @@ class ContatoDAO:
         return z
     @classmethod
     def __abrir(ui):
-        with open("contatos.json", mode="r") as arquivo:
+        with open("contatos2.json", mode="r") as arquivo:
             ui.__contatos.append(json.load(arquivo))
 
     @classmethod
     def __salvar(ui):
-        with open("contatos.json", mode="w") as arquivo:
+        with open("contatos2.json", mode="w") as arquivo:
             json.dump(ui.__contatos, arquivo, default = Contato.contato)

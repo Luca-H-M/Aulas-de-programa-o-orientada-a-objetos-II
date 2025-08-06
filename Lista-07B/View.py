@@ -2,19 +2,31 @@
 from Model import ContatoDAO
 
 class View:
-    def __init__(self):
-        self.x = ContatoDAO
-    def Contato_inserir(self):
-        return self.x.inserir
-    def Contato_listar(self):
-        return self.x.listar()
-    def Contato_listar_id(self):
-        return self.x.listar_id()
-    def Contato_atualizar(self):
-        return self.x.atualizar()
-    def Contato_excluir(self):
-        return self.x.excluir()
-    def Contato_pesquisar(self):
-        return self.x.pesquisar()
-    def Contato_aniversariantes(self):
-        return self.x.aniversariantes()
+    @staticmethod
+    def Contato_inserir(contato):
+        x = ContatoDAO
+        return x.inserir(contato)
+    @staticmethod
+    def Contato_listar():
+        x = ContatoDAO
+        return x.listar()
+    @staticmethod
+    def Contato_listar_id(id):
+        x = ContatoDAO
+        return x.listar_id(id)
+    @staticmethod
+    def Contato_atualizar():
+        x = ContatoDAO
+        return x.atualizar()
+    @staticmethod
+    def Contato_excluir():
+        x = ContatoDAO
+        return x.excluir()
+    @staticmethod
+    def Contato_pesquisar():
+        x = ContatoDAO
+        return x.pesquisar()
+    @staticmethod
+    def Contato_aniversariantes():
+        x = ContatoDAO
+        return x.aniversariantes()
