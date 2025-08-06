@@ -82,8 +82,10 @@ class ContatoDAO:
     @classmethod
     def listar(ui):
         ui.__abrir()
+        z = []
         for x in ui.__contatos:
-            print(x)
+            z.append(x)
+        return z
     
     @classmethod
     def listar_id(ui):
@@ -91,7 +93,7 @@ class ContatoDAO:
         z = input("id")
         for x in ui.__contatos:
             if x.get_id().startswith(z):
-                print (x)
+                return x
 
     @classmethod
     def atualizar(ui):
@@ -123,16 +125,17 @@ class ContatoDAO:
         x = input("Informe o nome: ")
         for y in ui.__contatos:
             if y.get_nome().startswith(x):
-                print(y)
+                return y
 
     @classmethod
     def aniversariantes(ui):
+        z = []
         y = input("Informe o mês")
         ui.__abrir()
         for x in ui.__contatos:
             if x.get_nascimento().month == y:
-                print(x)
-
+                z.append(x)
+        return z
     @classmethod
     def __abrir(ui):
         with open("contatos.json", mode="r") as arquivo:

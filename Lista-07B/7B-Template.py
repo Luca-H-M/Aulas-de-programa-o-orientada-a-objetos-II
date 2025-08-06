@@ -1,20 +1,20 @@
 # I. Desenvolver em Python um cadastro de contato usando programação em camadas:
-from Model import ContatoDAO
+from View import View
 
 class ContatoUI:
     @classmethod
     def main(ui):
         x = 0
-        y = ContatoDAO
+        y = View
         while x != 10:
             x = ui.menu()
-            if x == 1: y.inserir()
-            if x == 2: y.listar()
-            if x == 3: y.listar_id()
-            if x == 4: y.atualizar()
-            if x == 5: y.excluir()
-            if x == 6: y.pesquisar()
-            if x == 7: y.aniversariantes()
+            if x == 1: y.Contato_inserir()
+            if x == 2: y.Contato_listar()
+            if x == 3: y.Contato_listar_id()
+            if x == 4: y.Contato_atualizar()
+            if x == 5: y.Contato_excluir()
+            if x == 6: y.Contato_pesquisar()
+            if x == 7: y.Contato_aniversariantes()
         
     @classmethod
     def menu(ui):
