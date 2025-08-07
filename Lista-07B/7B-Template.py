@@ -5,16 +5,16 @@ class ContatoUI:
     @classmethod
     def main(ui):
         x = 0
-        ui.y = View
+        ui.View = View
         while x != 10:
             x = ui.menu()
             if x == 1: ui.inserir_ui()
             if x == 2: ui.listar_ui()
             if x == 3: ui.listar_id_ui()
-            if x == 4: ui.y.Contato_atualizar()
-            if x == 5: ui.y.Contato_excluir()
-            if x == 6: ui.y.Contato_pesquisar()
-            if x == 7: ui.y.Contato_aniversariantes()
+            if x == 4: ui.View.Contato_atualizar()
+            if x == 5: ui.View.Contato_excluir()
+            if x == 6: ui.View.Contato_pesquisar()
+            if x == 7: ui.View.Contato_aniversariantes()
         
     @classmethod
     def menu(ui):
@@ -22,20 +22,17 @@ class ContatoUI:
     
     @classmethod
     def inserir_ui(ui):
-        ui.y.Contato_inserir([input("id"), input("nome"), input("email"), input("nascimento: ano, mês, dia"), input("fone")])
+        ui.View.Contato_inserir([input("id"), input("nome"), input("email"), input("nascimento: ano, mês, dia"), input("fone")])
 
     @classmethod
     def listar_ui(ui):
-        print(ui.y.Contato_listar())
+        print(ui.View.Contato_listar())
 
     @classmethod
     def listar_id_ui(ui):
         z = input("id")
-        ui.y.Contato_listar_id(z)
+        ui.View.Contato_listar_id(z)
 
     @classmethod
     def atualizar_ui(ui):
         pass
-
-x = ContatoUI()
-x.main()

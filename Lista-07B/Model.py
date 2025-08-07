@@ -74,24 +74,18 @@ class ContatoDAO:
             ui.__abrir()
         except:
             pass
-        y = []
-        y.append(z)
-        ui.__contatos.append(y)
+        ui.__contatos.append(z)
         ui.__salvar()
 
     @classmethod
     def listar(ui):
         ui.__abrir()
-        z = []
-        for x in ui.__contatos:
-            z.append(x)
-        return z
+        return ui.__contatos
     
     @classmethod
     def listar_id(ui, z):
         ui.__abrir()
         for x in ui.__contatos:
-            print (x)
             if x.get_id().startswith(z):
                 return x
 
