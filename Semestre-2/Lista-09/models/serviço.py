@@ -9,20 +9,20 @@ class Servico:
         return f"{self.__id}-{self.__descricao}-{self.__valor}–{self.__fone}"
     
     def get_id(self): return self.__id
-    def get_nome(self): return self.__descricao
-    def get_email(self): return self.__valor
+    def get_descricao(self): return self.__descricao
+    def get_valor(self): return self.__valor
 
     def set_id(self, id): self.__id = id
-    def set_nome(self, descricao): self.__descricao = descricao
-    def set_email(self, valor): self.__valor = valor
+    def set_descricao(self, descricao): self.__descricao = descricao
+    def set_valor(self, valor): self.__valor = valor
 
     def to_json(self):
-        dic = {"id":self.__id, "nome":self.__nome,"email":self.__email, "fone":self.__fone}
+        dic = {"id":self.__id, "descricao":self.__descricao,"valor":self.__valor, "fone":self.__fone}
         return dic
     
     @staticmethod
     def from_json(dic):
-        return Servico(dic["id"], dic["nome"], dic["email"],dic["fone"])
+        return Servico(dic["id"], dic["descricao"], dic["valor"],dic["fone"])
     
 class ServicoDAO():
     __objetos = []
