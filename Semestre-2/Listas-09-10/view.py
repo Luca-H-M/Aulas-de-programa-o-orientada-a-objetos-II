@@ -6,6 +6,8 @@ from models.profissional import Profissional, ProfissionalDAO
 class View:
     def cliente_listar():
         return ClienteDAO.listar()
+    def cliente_listar_id(id):
+        return ClienteDAO.listar_id(id)
     def cliente_inserir(nome, email, fone):
         cliente = Cliente(0, nome, email, fone)
         ClienteDAO.inserir(cliente)
@@ -16,20 +18,22 @@ class View:
         cliente = Cliente(id, "", "", "")
         ClienteDAO.excluir(cliente)
 
-    def profissional_listar():
+    def Profissionais_listar():
         return ProfissionalDAO.listar()
-    def profissional_inserir(nome, email, fone):
+    def Profissionais_inserir(nome, email, fone):
         profissional = Profissional(0, nome, email, fone)
         ProfissionalDAO.inserir(profissional)
-    def profissional_atualizar(id, nome, email, fone):
+    def Profissionais_atualizar(id, nome, email, fone):
         profissional = Profissional(id, nome, email, fone)
         ProfissionalDAO.atualizar(profissional)
-    def profissional_excluir(id):
+    def Profissionais_excluir(id):
         profissional = Profissional(id, "", "", "")
         ProfissionalDAO.excluir(profissional)
 
     def servico_listar():
         return ServicoDAO.listar()
+    def servico_listar_id(id):
+        return ServicoDAO.listar_id(id)
     def servico_inserir(descricao, valor):
         servico = Servico(0, descricao, valor)
         ServicoDAO.inserir(servico)

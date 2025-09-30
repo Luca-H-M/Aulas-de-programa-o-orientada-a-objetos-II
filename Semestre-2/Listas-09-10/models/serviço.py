@@ -6,7 +6,7 @@ class Servico:
         self.set_valor(valor)
 
     def __str__(self):
-        return f"{self.__id}-{self.__descricao}-{self.__valor}–{self.__fone}"
+        return f"{self.__id}-{self.__descricao}-{self.__valor}"
     
     def get_id(self): return self.__id
     def get_descricao(self): return self.__descricao
@@ -17,12 +17,12 @@ class Servico:
     def set_valor(self, valor): self.__valor = valor
 
     def to_json(self):
-        dic = {"id":self.__id, "descricao":self.__descricao,"valor":self.__valor, "fone":self.__fone}
+        dic = {"id":self.__id, "descricao":self.__descricao,"valor":self.__valor}
         return dic
     
     @staticmethod
     def from_json(dic):
-        return Servico(dic["id"], dic["descricao"], dic["valor"],dic["fone"])
+        return Servico(dic["id"], dic["descricao"], dic["valor"])
     
 class ServicoDAO():
     __objetos = []
@@ -68,7 +68,7 @@ class ServicoDAO():
     def abrir(cls):
         cls.__objetos = []
         try:
-            with open("clientes.json", mode="r") as arquivo:
+            with open("servico.json", mode="r") as arquivo:
                 list_dic = json.load(arquivo)
                 for dic in list_dic:
                     obj = Servico.from_json(dic)
@@ -78,5 +78,5 @@ class ServicoDAO():
 
     @classmethod
     def salvar(cls):
-        with open("clientes.json", mode="w") as arquivo:
+        with open("servico.json", mode="w") as arquivo:
             json.dump(cls.__objetos, arquivo, default = Servico.to_json)

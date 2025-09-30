@@ -30,7 +30,7 @@ class Horario:
 
     @staticmethod
     def from_json(dic):
-        horario = Horario(dic["id"], datetime.strptime(dic["data"], "%d/%m/%Y%H:%M"))
+        horario = Horario(dic["id"], datetime.strptime(dic["data"], "%d/%m/%Y %H:%M"))
         horario.set_confirmado(dic["confirmado"])
         horario.set_id_cliente(dic["id_cliente"])
         horario.set_id_servico(dic["id_servico"])
@@ -64,16 +64,14 @@ class HorarioDAO:
     
     @classmethod
     def atualizar(cls, obj):
-        aux = cls.listar_id
-        (obj.get_id())
+        aux = cls.listar_id(obj.get_id())
         if aux != None: cls.__objetos.remove(aux)
         cls.__objetos.append(obj)
         cls.salvar()
 
     @classmethod
     def excluir(cls, obj):
-        aux = cls.listar_id
-        (obj.get_id())
+        aux = cls.listar_id(obj.get_id())
         if aux != None: cls.__objetos.remove(aux)
         cls.salvar()
 
@@ -83,8 +81,9 @@ class HorarioDAO:
         try:
             with open("horarios.json", mode="r") as arquivo:
                 list_dic = json.load(arquivo)
-                for dic in list_dic: obj = Horario.from_json(dic)
-                cls.__objetos.append(obj)
+                for dic in list_dic: 
+                    obj = Horario.from_json(dic)
+                    cls.__objetos.append(obj)
         except FileNotFoundError:
             pass
 

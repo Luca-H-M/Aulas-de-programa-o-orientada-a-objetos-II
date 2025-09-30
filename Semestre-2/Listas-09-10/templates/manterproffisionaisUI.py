@@ -23,8 +23,8 @@ class ManterProfissionaisUI:
     
     def inserir():
         nome = st.text_input("Informe o nome")
-        email = st.text_input("Informe o e-mail")
-        fone = st.text_input("Informe o fone")
+        email = st.text_input("Informe a especialidade")
+        fone = st.text_input("Informe o conselho")
 
         if st.button("Inserir"):
             View.Profissionais_inserir(nome, email, fone)
@@ -39,8 +39,8 @@ class ManterProfissionaisUI:
         else:
             op = st.selectbox("Atualização de Profissionais", Profissionais)
             nome = st.text_input("Novo nome", op.get_nome())
-            email = st.text_input("Novo e-mail", op.get_email())
-            fone = st.text_input("Novo fone", op.get_fone())
+            email = st.text_input("Novo e-mail", op.get_especialidade())
+            fone = st.text_input("Novo fone", op.get_conselho())
             if st.button("Atualizar"):
                 id = op.get_id()
                 View.Profissionais_atualizar(id, nome, email, fone)
