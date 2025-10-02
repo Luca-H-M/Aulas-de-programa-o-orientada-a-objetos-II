@@ -23,11 +23,14 @@ class ManterProfissionaisUI:
     
     def inserir():
         nome = st.text_input("Informe o nome")
-        email = st.text_input("Informe a especialidade")
-        fone = st.text_input("Informe o conselho")
+        especialidade = st.text_input("Informe a especialidade")
+        conselho = st.text_input("Informe o conselho")
+        email = st.text_input("informe o e-mail")
+        senha = st.text_input("Informe a senha", type="password")
+
 
         if st.button("Inserir"):
-            View.Profissionais_inserir(nome, email, fone)
+            View.Profissionais_inserir(nome, especialidade, conselho, email, senha)
             st.success("Profissionais inserido com sucesso")
             time.sleep(2)
             st.rerun()
@@ -39,11 +42,13 @@ class ManterProfissionaisUI:
         else:
             op = st.selectbox("Atualização de Profissionais", Profissionais)
             nome = st.text_input("Novo nome", op.get_nome())
-            email = st.text_input("Novo e-mail", op.get_especialidade())
-            fone = st.text_input("Novo fone", op.get_conselho())
+            especialidade = st.text_input("Nova especialidade", op.get_especialidade())
+            conselho = st.text_input("Novo conselho", op.get_conselho())
+            email = st.text_input("Novo conselho", op.get_email())
+            senha =st.text_input("Nova senha", op.get_senha(),type="password")
             if st.button("Atualizar"):
                 id = op.get_id()
-                View.Profissionais_atualizar(id, nome, email, fone)
+                View.Profissionais_atualizar(id, nome, especialidade, conselho, email, senha)
                 st.success("Profissionais atualizado com sucesso")
 
     def excluir():

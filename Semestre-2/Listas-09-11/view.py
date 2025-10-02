@@ -20,14 +20,14 @@ class View:
 
     def Profissionais_listar():
         return ProfissionalDAO.listar()
-    def Profissionais_inserir(nome, email, fone):
-        profissional = Profissional(0, nome, email, fone)
+    def Profissionais_inserir(nome, especialidade, conselho, email, senha):
+        profissional = Profissional(0, nome, especialidade, conselho, email, senha)
         ProfissionalDAO.inserir(profissional)
-    def Profissionais_atualizar(id, nome, email, fone):
-        profissional = Profissional(id, nome, email, fone)
+    def Profissionais_atualizar(id, nome, especialidade, conselho, email, senha):
+        profissional = Profissional(id, nome, especialidade, conselho, email, senha)
         ProfissionalDAO.atualizar(profissional)
     def Profissionais_excluir(id):
-        profissional = Profissional(id, "", "", "")
+        profissional = Profissional(id, "", "", "", "", "")
         ProfissionalDAO.excluir(profissional)
 
     def servico_listar():
@@ -41,7 +41,7 @@ class View:
         servico = Servico(id, descricao, valor)
         ServicoDAO.atualizar(servico)
     def servico_excluir(id):
-        servico = Servico(id, "", "", "")
+        servico = Servico(id, "", "")
         ServicoDAO.excluir(servico)
 
 
