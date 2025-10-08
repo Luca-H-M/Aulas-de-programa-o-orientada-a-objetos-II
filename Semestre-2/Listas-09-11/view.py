@@ -20,6 +20,8 @@ class View:
 
     def Profissionais_listar():
         return ProfissionalDAO.listar()
+    def Profissionais_listar_id(id):
+        return ProfissionalDAO.listar_id(id)
     def Profissionais_inserir(nome, especialidade, conselho, email, senha):
         profissional = Profissional(0, nome, especialidade, conselho, email, senha)
         ProfissionalDAO.inserir(profissional)
@@ -72,5 +74,10 @@ class View:
         for c in View.cliente_listar():
             if c.get_email() == email and c.get_senha() == senha:
                 return{"id": c.get_id(), "nome": c.get_nome()}
-
+        return None
+    
+    def Profissionais_autenticar(email, senha):
+        for c in View.Profissionais_listar():
+            if c.get_email() == email and c.get_senha() == senha:
+                return{"id": c.get_id(), "nome": c.get_nome()}
         return None

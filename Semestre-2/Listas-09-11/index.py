@@ -5,6 +5,7 @@ from templates.manterproffisionaisUI import ManterProfissionaisUI
 from templates.abrircontaUI import AbrirContaUI
 from templates.loginUI import LoginUI
 from templates.perfilclienteUI import PerfilClienteUI
+from templates.pefilprofissionaisUI import PerfilProfissionaisUI
 from view import View
 import streamlit as st
 
@@ -25,6 +26,10 @@ class IndexUI:
         op = st.sidebar.selectbox("Menu", ["Meus Dados"])
         if op == "Meus Dados": PerfilClienteUI.main()
 
+    def menu_profissional():
+        op = st.sidebar.selectbox("Menu", ["Meus Dados"])
+        if op == "Meus Dados": PerfilProfissionaisUI.main()
+
 
     def sair_do_sistema():
         if st.sidebar.button("Sair"):
@@ -37,9 +42,17 @@ class IndexUI:
 
         else:
             admin = st.session_state["usuario_nome"] == "admin"
+            profissional = False
+            try:
+                x = View.Profissionais_listar_id(st.session_state["usuario_id"])
+                nome = x.get_nome()
+                profissional = st.session_state["usuario_nome"] == nome
+            except:
+                pass
             st.sidebar.write("Bem-vindo(a), " + st.session_state["usuario_nome"])
 
             if admin: IndexUI.menu_admin()
+            elif profissional: IndexUI.menu_profissional()
             else: IndexUI.menu_cliente()
             IndexUI.sair_do_sistema()
 

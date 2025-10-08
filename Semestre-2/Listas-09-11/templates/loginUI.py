@@ -9,7 +9,14 @@ class LoginUI:
 
         if st.button("Entrar"): 
             c = View.cliente_autenticar(email, senha)
-            if c == None: st.write("E-mail ou senha inválidos")
+            if c == None: 
+                c = View.Profissionais_autenticar(email, senha)
+                if c == None:st.write("E-mail ou senha inválidos")
+
+                else:
+                    st.session_state["usuario_id"] = c["id"]
+                    st.session_state["usuario_nome"] = c["nome"]
+                    st.rerun()
 
             else:
                 st.session_state["usuario_id"] = c["id"]
