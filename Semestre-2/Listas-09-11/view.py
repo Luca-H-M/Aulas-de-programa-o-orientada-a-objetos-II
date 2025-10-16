@@ -2,6 +2,7 @@ from models.cliente import Cliente, ClienteDAO
 from models.serviço import Servico, ServicoDAO
 from models.horario import Horario, HorarioDAO
 from models.profissional import Profissional, ProfissionalDAO
+from datetime import datetime
 
 class View:
     def cliente_listar():

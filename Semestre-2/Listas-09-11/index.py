@@ -29,8 +29,9 @@ class IndexUI:
         if op == "Agendar Serviço": AgendarServicoUI.main()
 
     def menu_profissional():
-        op = st.sidebar.selectbox("Menu", ["Meus Dados"])
+        op = st.sidebar.selectbox("Menu", ["Meus Dados", "Minha Agenda"])
         if op == "Meus Dados": PerfilProfissionaisUI.main()
+        if op == "Minha Agenda": PerfilProfissionaisUI.agenda()
 
 
     def sair_do_sistema():
@@ -44,17 +45,10 @@ class IndexUI:
 
         else:
             admin = st.session_state["usuario_nome"] == "admin"
-            profissional = False
-            try:
-                x = View.Profissionais_listar_id(st.session_state["usuario_id"])
-                nome = x.get_nome()
-                profissional = st.session_state["usuario_nome"] == nome
-            except:
-                pass
             st.sidebar.write("Bem-vindo(a), " + st.session_state["usuario_nome"])
 
             if admin: IndexUI.menu_admin()
-            elif profissional: IndexUI.menu_profissional()
+            elif st.session_state["usuario_profissional"] == "true": IndexUI.menu_profissional()
             else: IndexUI.menu_cliente()
             IndexUI.sair_do_sistema()
 
