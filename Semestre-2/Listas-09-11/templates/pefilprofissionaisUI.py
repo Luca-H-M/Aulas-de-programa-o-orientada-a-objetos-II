@@ -7,25 +7,12 @@ class PerfilProfissionaisUI:
 
         op = View.Profissionais_listar_id(st.session_state["usuario_id"])
         nome = st.text_input("Informe o novo nome", op.get_nome())
+        especialidade = st.text_input("Informe o novo especialidade", op.get_especialidade())
+        conselho = st.text_input("Informe o novo conselho", op.get_conselho())
         email = st.text_input("Informe o novo e-mail", op.get_email())
-        fone = st.text_input("Informe o novo fone", op.get_fone())
         senha = st.text_input("Informe a nova senha", op.get_senha(),type="password")
 
         if st.button("Atualizar"):
             id = op.get_id()
-            View.Profissionais_atualizar(id, nome, email, fone, senha)
-            st.success("Profissionais atualizado com sucesso")
-
-    def agenda():
-        #é complicado e eu n to a fim de continuar agr, mas oq falta ta aq
-        st.header("Atualização da agenda")        
-        op = View.Profissionais_listar_id(st.session_state["usuario_id"])
-        nome = st.text_input("Informe o novo nome", op.get_nome())
-        email = st.text_input("Informe o novo e-mail", op.get_email())
-        fone = st.text_input("Informe o novo fone", op.get_fone())
-        senha = st.text_input("Informe a nova senha", op.get_senha(),type="password")
-
-        if st.button("Atualizar"):
-            id = op.get_id()
-            View.Profissionais_atualizar(id, nome, email, fone, senha)
+            View.Profissionais_atualizar(id, nome, especialidade, conselho, email, senha)
             st.success("Profissionais atualizado com sucesso")
