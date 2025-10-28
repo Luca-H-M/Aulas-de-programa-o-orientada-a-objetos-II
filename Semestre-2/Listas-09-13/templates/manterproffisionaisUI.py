@@ -30,10 +30,13 @@ class ManterProfissionaisUI:
 
 
         if st.button("Inserir"):
-            View.Profissionais_inserir(nome, especialidade, conselho, email, senha)
-            st.success("Profissionais inserido com sucesso")
-            time.sleep(2)
-            st.rerun()
+            try:
+                View.Profissionais_inserir(nome, especialidade, conselho, email, senha)
+                st.success("Profissionais inserido com sucesso")
+                time.sleep(2)
+                st.rerun()
+            except ValueError as error:
+                st.error(error)
 
     def atualizar():
         Profissionais = View.Profissionais_listar()
@@ -47,9 +50,12 @@ class ManterProfissionaisUI:
             email = st.text_input("Novo conselho", op.get_email())
             senha =st.text_input("Nova senha", op.get_senha(),type="password")
             if st.button("Atualizar"):
-                id = op.get_id()
-                View.Profissionais_atualizar(id, nome, especialidade, conselho, email, senha)
-                st.success("Profissionais atualizado com sucesso")
+                try:
+                    id = op.get_id()
+                    View.Profissionais_atualizar(id, nome, especialidade, conselho, email, senha)
+                    st.success("Profissionais atualizado com sucesso")
+                except ValueError as error:
+                    st.error(error)
 
     def excluir():
         Profissionais = View.Profissionais_listar()
@@ -59,6 +65,9 @@ class ManterProfissionaisUI:
         else:
             op = st.selectbox("Exclusão de Profissionais", Profissionais)
             if st.button("Excluir"):
-                id = op.get_id()
-                View.Profissionais_excluir(id)
-                st.success("Profissionais excluído com sucesso")
+                try:
+                    id = op.get_id()
+                    View.Profissionais_excluir(id)
+                    st.success("Profissionais excluído com sucesso")
+                except ValueError as error:
+                    st.error(error)
