@@ -84,20 +84,29 @@ class View:
         c.set_id_cliente(id_cliente)
         c.set_id_servico(id_servico)
         c.set_id_profissional(id_profissional)
+        for x in View.horario_listar:
+            if x.get_id_profissional == id_profissional and x.get_data == data: raise ValueError("Horario já cadastrado para este profissional")
         HorarioDAO.inserir(c)
     def horario_listar():
         r = HorarioDAO.listar()
         r.sort(key = lambda obj : obj.get_data())
         return r
+    def horario_listar_id(id):
+        return HorarioDAO.listar_id(id)
     def horario_atualizar(id, data, confirmado, id_cliente, id_servico, id_profissional):
         c = Horario(id, data)
         c.set_confirmado(confirmado)
         c.set_id_cliente(id_cliente)
         c.set_id_servico(id_servico)
         c.set_id_profissional(id_profissional)
+        for x in View.horario_listar:
+            if x.get_id_profissional == id_profissional and x.get_data == data: raise ValueError("Horario já cadastrado para este profissional")
         HorarioDAO.atualizar(c)
     def horario_excluir(id):
         c = Horario(id, None)
+        for x in View.horario_listar_id(id):
+            if x.get_id_cliente():
+                raise ValueError("Horario já agendado por um cliente: não é possível excluir")
         HorarioDAO.excluir(c)
         
     def horario_agendar_horario(id_profissional):

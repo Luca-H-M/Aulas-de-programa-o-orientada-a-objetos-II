@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, date
 import json
 
 class Horario:
@@ -22,6 +22,7 @@ class Horario:
 
     def set_id(self, id): self.__id = id
     def set_data(self, data): 
+        if data < date.today(): raise ValueError("data invalido")
         self.__data = data
     def set_confirmado(self, confirmado): self.__confirmado = confirmado
     def set_id_cliente(self, id_cliente): self.__id_cliente = id_cliente

@@ -40,13 +40,16 @@ class AgendaPUI:
         intervalo = st.number_input("Informe o intervalo entere horarios")
 
         if st.button("Inserir"):
-            inicio = datetime.combine(data, comeco_consulta)
-            fim = datetime.combine(data, fim_consulta)
-            while fim > inicio:
-                list = []
-                View.horario_inserir(inicio, False, None, None, profissional_id())
-                list.append(inicio.strftime("%H:%M"))
-                inicio += timedelta(minutes=intervalo)
-            st.success("Horarios inseridos com sucesso")
-            time.sleep(2)
-            st.rerun()
+            try:
+                inicio = datetime.combine(data, comeco_consulta)
+                fim = datetime.combine(data, fim_consulta)
+                while fim > inicio:
+                    list = []
+                    View.horario_inserir(inicio, False, None, None, profissional_id())
+                    list.append(inicio.strftime("%H:%M"))
+                    inicio += timedelta(minutes=intervalo)
+                st.success("Horarios inseridos com sucesso")
+                time.sleep(2)
+                st.rerun()
+            except ValueError as error:
+                st.error(error)

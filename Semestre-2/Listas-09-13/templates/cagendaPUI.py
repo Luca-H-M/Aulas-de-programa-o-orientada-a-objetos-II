@@ -23,8 +23,8 @@ class CagendaPUI:
         cliente_selecionado = st.selectbox("Cliente", clientes_op, format_func=lambda c: f"{c.get_id()} - {c.get_nome()} - {c.get_email()} - {c.get_fone()}")
 
         if st.button("Confirmar"):
-            View.horario_atualizar(x.get_id(), x.get_data(), True,  x.get_id_cliente(), x.get_id_servico(), x.get_id_profissional())
-            
-            st.success("Serviço confirmado com sucesso!")
-            time.sleep(2)
-            st.rerun()
+                View.horario_atualizar(x.get_id(), x.get_data(), True,  x.get_id_cliente(), x.get_id_servico(), x.get_id_profissional())
+                
+                st.success("Serviço confirmado com sucesso!")
+                time.sleep(2)
+                st.rerun()
