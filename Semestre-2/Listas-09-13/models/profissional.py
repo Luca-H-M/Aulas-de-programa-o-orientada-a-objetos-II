@@ -8,9 +8,10 @@ class Profissional:
         self.set_conselho(conselho)
         self.set_email(email)
         self.set_senha(senha)
+        self.__nota = 0
 
     def __str__(self):
-        return f"{self.__id}-{self.__nome}-{self.__especialidade}–{self.__conselho}"
+        return f"{self.__id}-{self.__nome}-{self.__especialidade}–{self.__conselho}-{self.__nota}"
     
     def get_id(self): return self.__id
     def get_nome(self): return self.__nome
@@ -18,6 +19,7 @@ class Profissional:
     def get_conselho(self): return self.__conselho
     def get_email(self): return self.__email
     def get_senha(self): return self.__senha
+    def get_nota(self): return self.__nota
 
     def set_id(self, id): self.__id = id
     def set_nome(self, nome): 
@@ -32,8 +34,9 @@ class Profissional:
         if senha == "": raise ValueError("senha invalido")
         self.__senha = senha
 
+
     def to_json(self):
-        dic = {"id":self.__id, "nome":self.__nome,"especialidade":self.__especialidade, "conselho":self.__conselho, "email":self.__email, "senha":self.__senha}
+        dic = {"id":self.__id, "nome":self.__nome,"especialidade":self.__especialidade, "conselho":self.__conselho, "email":self.__email, "senha":self.__senha, "nota": self.__nota}
         return dic
 
     @staticmethod
