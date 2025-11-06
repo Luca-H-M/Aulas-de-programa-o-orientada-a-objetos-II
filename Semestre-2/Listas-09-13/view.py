@@ -2,6 +2,7 @@ from models.cliente import Cliente, ClienteDAO
 from models.serviço import Servico, ServicoDAO
 from models.horario import Horario, HorarioDAO
 from models.profissional import Profissional, ProfissionalDAO
+from models.nota import Nota, NotaDAO
 from datetime import datetime
 
 class View:
@@ -12,7 +13,8 @@ class View:
     def cliente_listar_id(id):
         return ClienteDAO.listar_id(id)
     def cliente_inserir(nome, email, fone, senha):
-        for x in View.cliente_listar:
+        z = View.cliente_listar()
+        for x in z:
             if x.get_email == email or x.get_email == "admin": raise ValueError("Email já cadastrado")
         cliente = Cliente(0, nome, email, fone, senha)
         ClienteDAO.inserir(cliente)
@@ -39,6 +41,7 @@ class View:
             if x.get_email == email or x.get_email == "admin": raise ValueError("Email já cadastrado")
         profissional = Profissional(0, nome, especialidade, conselho, email, senha)
         ProfissionalDAO.inserir(profissional)
+        NotaDAO.calc_nota("", email)
     def Profissionais_atualizar(id, nome, especialidade, conselho, email, senha):
         for x in View.Profissionais_listar:
             if x.get_email == email or x.get_email == "admin": raise ValueError("Email já cadastrado")
