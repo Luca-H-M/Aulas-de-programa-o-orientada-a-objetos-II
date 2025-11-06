@@ -32,7 +32,7 @@ class ManterProfissionaisUI:
         if st.button("Inserir"):
             try:
                 View.Profissionais_inserir(nome, especialidade, conselho, email, senha)
-                st.success("Profissionais inserido com sucesso")
+                st.success("Profissional inserido com sucesso")
                 time.sleep(2)
                 st.rerun()
             except ValueError as error:
@@ -40,7 +40,7 @@ class ManterProfissionaisUI:
 
     def atualizar():
         Profissionais = View.Profissionais_listar()
-        if len(Profissionais) == 0: st.write("Nenhum Profissionais cadastrado")
+        if len(Profissionais) == 0: st.write("Nenhum Profissional cadastrado")
 
         else:
             op = st.selectbox("Atualização de Profissionais", Profissionais)

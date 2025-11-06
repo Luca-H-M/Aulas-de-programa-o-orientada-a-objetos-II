@@ -53,8 +53,9 @@ class NotaDAO:
         elif cls.__list == []: #nota não foi inserida e não existe lista anterior
             cls.__list.append(Nota(nota, email))
             cls.salvar()
-        else: #nota foi inserida mas sem lista anterior
-            raise ValueError("profissional não existe")
+        else: #nota não foi inserida e com lista anterior
+           pass
+
 
 
     @classmethod
