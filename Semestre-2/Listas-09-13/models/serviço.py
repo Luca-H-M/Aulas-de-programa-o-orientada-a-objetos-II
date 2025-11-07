@@ -18,7 +18,7 @@ class Servico:
         self.__descricao = descricao
 
     def set_valor(self, valor): 
-        if valor < 0: raise ValueError("Descrição inválida")
+        if float(valor) < 0: raise ValueError("Descrição inválida")
         self.__valor = valor
 
     def to_json(self):
