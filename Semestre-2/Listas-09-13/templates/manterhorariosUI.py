@@ -22,7 +22,7 @@ class ManterHorarioUI:
             for obj in horarios:
                 cliente = View.cliente_listar_id(obj.get_id_cliente())
                 servico = View.servico_listar_id(obj.get_id_servico())
-                profissional - View.Profissionais_listar_id(obj.get_id_servico())
+                profissional = View.Profissionais_listar_id(obj.get_id_servico())
                 if cliente != None: cliente = cliente.get_nome()
                 if servico != None: servico = servico.get_descricao()
                 if profissional != None: profissional = profissional.get_nome 

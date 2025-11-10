@@ -87,6 +87,7 @@ class View:
 
 
     def horario_inserir(data, confirmado, id_cliente, id_servico, id_profissional):
+        if data < datetime.today(): raise ValueError("data invalido")
         c = Horario(0, data)
         c.set_confirmado(confirmado)
         c.set_id_cliente(id_cliente)
@@ -102,19 +103,19 @@ class View:
     def horario_listar_id(id):
         return HorarioDAO.listar_id(id)
     def horario_atualizar(id, data, confirmado, id_cliente, id_servico, id_profissional):
+        if data < datetime.today(): raise ValueError("data invalido")
         c = Horario(id, data)
         c.set_confirmado(confirmado)
         c.set_id_cliente(id_cliente)
         c.set_id_servico(id_servico)
         c.set_id_profissional(id_profissional)
         for x in View.horario_listar():
-            if x.get_id_profissional() == id_profissional and x.get_data() == data: raise ValueError("Horario já cadastrado para este profissional")
+            if x.get_id() != id and x.get_id_profissional() == id_profissional and x.get_data() == data: raise ValueError("Horario já cadastrado para este profissional")
         HorarioDAO.atualizar(c)
     def horario_excluir(id):
         c = Horario(id, None)
-        for x in View.horario_listar_id(id):
-            if x.get_id_cliente():
-                raise ValueError("Horario já agendado por um cliente: não é possível excluir")
+        x = View.horario_listar_id(id)
+        if x.get_confirmado() == True: raise ValueError("Horario já confirmado: não é possível excluir")
         HorarioDAO.excluir(c)
         
     def horario_agendar_horario(id_profissional):
