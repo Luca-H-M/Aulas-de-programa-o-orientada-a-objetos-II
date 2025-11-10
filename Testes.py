@@ -1,3 +1,24 @@
+x = 10
+if x == 10: pass
+elif x > 5: print("passou reto")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"""
 class Sla:
     def __init__(self, n, m):
         self.set_numbers(n)
@@ -29,7 +50,7 @@ for x in list[0].get_numbers():
 list[0].set_numbers(z)
 print(list[0])
 
-"""
+
 list.append(dic)
 list.append(dic2)
 list.append(dic3)

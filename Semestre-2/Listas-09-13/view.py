@@ -19,7 +19,8 @@ class View:
         ClienteDAO.inserir(cliente)
     def cliente_atualizar(id, nome, email, fone, senha):
         for x in View.cliente_listar():
-            if x.get_email() == email or email == "admin": raise ValueError("Email já cadastrado")
+            if x.get_id() == id: pass
+            elif x.get_email() == email or email == "admin": raise ValueError("Email já cadastrado")
         cliente = Cliente(id, nome, email, fone, senha)
         ClienteDAO.atualizar(cliente)
     def cliente_excluir(id):
@@ -37,15 +38,16 @@ class View:
     def Profissionais_listar_id(id):
         return ProfissionalDAO.listar_id(id)
     def Profissionais_inserir(nome, especialidade, conselho, email, senha):
+        profissional = Profissional(0, nome, especialidade, conselho, email, senha)
         for x in View.Profissionais_listar():
             if x.get_email() == email or email == "admin": raise ValueError("Email já cadastrado")
-        profissional = Profissional(0, nome, especialidade, conselho, email, senha)
         ProfissionalDAO.inserir(profissional)
         NotaDAO.calc_nota("", email)
 
     def Profissionais_atualizar(id, nome, especialidade, conselho, email, senha):
-        for x in View.Profissionais_listar:
-            if x.get_email() == email or email == "admin": raise ValueError("Email já cadastrado")
+        for x in View.Profissionais_listar():
+            if x.get_id() == id: pass
+            elif x.get_email() == email or email == "admin": raise ValueError("Email já cadastrado")
         profissional = Profissional(id, nome, especialidade, conselho, email, senha)
         ProfissionalDAO.atualizar(profissional)
     def Profissionais_excluir(id):
