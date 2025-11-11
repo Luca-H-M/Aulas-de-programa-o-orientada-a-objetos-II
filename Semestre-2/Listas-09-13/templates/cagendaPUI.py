@@ -5,7 +5,7 @@ from view import View
 class CagendaPUI:
     def main():
         Profissionais = View.Profissionais_listar_id(st.session_state["usuario_id"])
-        if len(Profissionais) == 0: st.write("Nenhum Profissionais cadastrado"); return
+        if Profissionais == None: st.write("Nenhum Profissionais cadastrado"); return
 
         horarios = View.horario_listar()
         if len(horarios) == 0: st.write("Nenhum horario cadastrado"); return

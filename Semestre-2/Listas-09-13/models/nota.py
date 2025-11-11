@@ -54,7 +54,8 @@ class NotaDAO:
             cls.__list.append(Nota(nota, email))
             cls.salvar()
         else: #nota não foi inserida e com lista anterior
-           pass
+           x = cls.__list[0].get_nota()
+           return x
 
 
 

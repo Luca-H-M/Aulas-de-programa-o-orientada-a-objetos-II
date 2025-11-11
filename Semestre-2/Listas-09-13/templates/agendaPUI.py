@@ -13,7 +13,7 @@ class AgendaPUI:
     
     def listar():
         Profissionais = View.Profissionais_listar_id(st.session_state["usuario_id"])
-        if len(Profissionais) == 0: st.write("Nenhum Profissionais cadastrado"); return
+        if Profissionais == None: st.write("Nenhum Profissionais cadastrado"); return
 
         horarios = View.horario_listar()
         if len(horarios) == 0: st.write("Nenhum horario cadastrado"); return
@@ -43,9 +43,9 @@ class AgendaPUI:
             try:
                 inicio = datetime.combine(data, comeco_consulta)
                 fim = datetime.combine(data, fim_consulta)
+                list = []
                 while fim > inicio:
-                    list = []
-                    View.horario_inserir(inicio, False, None, None, profissional_id())
+                    View.horario_inserir(inicio, False, None, None, profissional_id)
                     list.append(inicio.strftime("%H:%M"))
                     inicio += timedelta(minutes=intervalo)
                 st.success("Horarios inseridos com sucesso")
