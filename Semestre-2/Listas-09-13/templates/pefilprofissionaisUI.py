@@ -11,6 +11,7 @@ class PerfilProfissionaisUI:
         conselho = st.text_input("Informe o novo conselho", op.get_conselho())
         email = st.text_input("Informe o novo e-mail", op.get_email())
         senha = st.text_input("Informe a nova senha", op.get_senha(),type="password")
+        st.write(f'avaliado como: {View.nota_profissional(op.get_email())}/5')
 
         if st.button("Atualizar"):
             try:

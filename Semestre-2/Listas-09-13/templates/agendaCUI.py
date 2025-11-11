@@ -17,7 +17,7 @@ class AgendaCUI:
         list = []
         for x in horarios_cliente:
             servico = View.servico_listar_id(x.get_id_servico())
-            profissional = View.Profissionais_listar_id(x.get_id_Profissional())
+            profissional = View.Profissionais_listar_id(x.get_id_profissional())
 
             list.append({"id": x.get_id(),"data": x.get_data(),"confirmado": x.get_confirmado(),"serviço": servico.get_descricao() if servico else None, "profissional": profissional.get_nome() if profissional else None})
 

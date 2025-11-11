@@ -7,13 +7,21 @@ class Nota:
 
     def get_nota(self): 
         nf = 0
-        for x in self.__nota:
-            nf += x
-        return nf/len(self.__nota)
+        if len(self.__nota) > 1:
+            for x in self.__nota:
+                nf += x
+            return nf/len(self.__nota)
+        else: return "N/a"
     def get_notas(self): return self.__nota
     def get_email(self): return self.__email
 
-    def set_nota(self, nota): self.__nota = nota
+    def set_nota(self, nota): 
+        z = []
+        for x in nota:
+            if x == "": pass
+            else: z.append(x)
+        
+        self.__nota = nota
     def set_email(self, email): self.__email = email
 
 
@@ -26,7 +34,7 @@ class Nota:
     
     @staticmethod
     def from_json(dic):
-        return Nota(dic["email"], dic["nota"])
+        return Nota(dic["nota"], dic["email"])
 
 
 
@@ -65,7 +73,6 @@ class NotaDAO:
         for x in cls.__list:
             if x.get_email() == email: cls.__list = []; cls.__list.append(x)
         return None
-
 
 
     @classmethod

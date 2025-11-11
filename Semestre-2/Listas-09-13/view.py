@@ -143,3 +143,11 @@ class View:
             if c.get_email() == email and c.get_senha() == senha:
                 return{"id": c.get_id(), "nome": c.get_nome()}
         return None
+    
+    def nota_atualizar(nota, id):
+        x = View.Profissionais_listar_id(id)
+        n = NotaDAO.calc_nota(nota, x.get_email())
+
+    def nota_profissional(email):
+        x = NotaDAO.calc_nota("", email)
+

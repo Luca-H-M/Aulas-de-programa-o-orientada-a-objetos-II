@@ -10,6 +10,7 @@ from templates.agendarservicosUI import AgendarServicoUI
 from templates.agendaPUI import AgendaPUI
 from templates.cagendaPUI import CagendaPUI
 from templates.agendaCUI import AgendaCUI
+from templates.avprofissionais import AVProfissionais
 from view import View
 import streamlit as st
 
@@ -27,11 +28,11 @@ class IndexUI:
         if op == "Abrir Conta": AbrirContaUI.main()
 
     def menu_cliente():
-        op = st.sidebar.selectbox("Menu", ["Meus Dados","Agendar Serviço", "Meus serviços", "Profissionais"])
+        op = st.sidebar.selectbox("Menu", ["Meus Dados","Agendar Serviço", "Meus serviços", "Avaliar Profissionais"])
         if op == "Meus Dados": PerfilClienteUI.main()
         if op == "Agendar Serviço": AgendarServicoUI.main()
         if op == "Meus serviços": AgendaCUI.main()
-        #if op == "Avaliar Profissionais" : AVProfissionais.main()
+        if op == "Avaliar Profissionais" : AVProfissionais.main()
 
     def menu_profissional():
         op = st.sidebar.selectbox("Menu", ["Meus Dados", "Minha Agenda", "Confirmar serviço"])
